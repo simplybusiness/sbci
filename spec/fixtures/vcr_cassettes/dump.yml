@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/job/test_job/config.xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Winstone Servlet Engine v0.9.10
+      Content-Type:
+      - application/xml
+      Connection:
+      - Close
+      Date:
+      - Mon, 02 Jul 2012 11:49:49 GMT
+      X-Powered-By:
+      - Servlet/2.5 (Winstone/0.9.10)
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?><project>\n  <actions/>\n
+        \ <description>_PROJECT_NAME_</description>\n  <logRotator>\n    <daysToKeep>1</daysToKeep>\n
+        \   <numToKeep>5</numToKeep>\n    <artifactDaysToKeep>-1</artifactDaysToKeep>\n
+        \   <artifactNumToKeep>-1</artifactNumToKeep>\n  </logRotator>\n  <keepDependencies>false</keepDependencies>\n
+        \ <properties>\n    <com.coravy.hudson.plugins.github.GithubProjectProperty>\n
+        \     <projectUrl>_PROJECT_URL_</projectUrl>\n    </com.coravy.hudson.plugins.github.GithubProjectProperty>\n
+        \ </properties>\n  <scm class=\"hudson.plugins.git.GitSCM\">\n    <configVersion>2</configVersion>\n
+        \   <userRemoteConfigs>\n      <hudson.plugins.git.UserRemoteConfig>\n        <name/>\n
+        \       <refspec/>\n        <url>_GIT_REPO_</url>\n      </hudson.plugins.git.UserRemoteConfig>\n
+        \   </userRemoteConfigs>\n    <branches>\n      <hudson.plugins.git.BranchSpec>\n
+        \       <name>_BRANCH_NAME_</name>\n      </hudson.plugins.git.BranchSpec>\n
+        \   </branches>\n    <disableSubmodules>false</disableSubmodules>\n    <recursiveSubmodules>false</recursiveSubmodules>\n
+        \   <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>\n
+        \   <authorOrCommitter>false</authorOrCommitter>\n    <clean>false</clean>\n
+        \   <wipeOutWorkspace>false</wipeOutWorkspace>\n    <pruneBranches>false</pruneBranches>\n
+        \   <remotePoll>false</remotePoll>\n    <ignoreNotifyCommit>false</ignoreNotifyCommit>\n
+        \   <buildChooser class=\"hudson.plugins.git.util.DefaultBuildChooser\"/>\n
+        \   <gitTool>Default</gitTool>\n    <submoduleCfg class=\"list\"/>\n    <relativeTargetDir/>\n
+        \   <reference/>\n    <excludedRegions/>\n    <excludedUsers/>\n    <gitConfigName/>\n
+        \   <gitConfigEmail/>\n    <skipTag>false</skipTag>\n    <includedRegions/>\n
+        \   <scmName/>\n  </scm>\n  <canRoam>true</canRoam>\n  <disabled>false</disabled>\n
+        \ <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>\n
+        \ <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>\n
+        \ <triggers class=\"vector\">\n    <com.cloudbees.jenkins.GitHubPushTrigger>\n
+        \     <spec/>\n    </com.cloudbees.jenkins.GitHubPushTrigger>\n    <hudson.triggers.SCMTrigger>\n
+        \     <spec>* * * * *</spec>\n    </hudson.triggers.SCMTrigger>\n  </triggers>\n
+        \ <concurrentBuild>false</concurrentBuild>\n  <builders>\n    <hudson.tasks.Shell>\n
+        \     <command>rvm --force gemset empty _PROJECT_NAME_ &amp;&amp; bundle install</command>\n
+        \   </hudson.tasks.Shell>\n    <hudson.tasks.Shell>\n      <command>bundle
+        exec rspec spec --format html -o doc/rspec.html</command>\n    </hudson.tasks.Shell>\n
+        \ </builders>\n  <publishers>\n    <hudson.tasks.ArtifactArchiver>\n      <artifacts>doc/*html</artifacts>\n
+        \     <latestOnly>false</latestOnly>\n    </hudson.tasks.ArtifactArchiver>\n
+        \   <htmlpublisher.HtmlPublisher>\n      <reportTargets>\n        <htmlpublisher.HtmlPublisherTarget>\n
+        \         <reportName>Rspec Report</reportName>\n          <reportDir>doc</reportDir>\n
+        \         <reportFiles>rspec.html</reportFiles>\n          <keepAll>true</keepAll>\n
+        \         <wrapperName>htmlpublisher-wrapper.html</wrapperName>\n        </htmlpublisher.HtmlPublisherTarget>\n
+        \     </reportTargets>\n    </htmlpublisher.HtmlPublisher>\n    <hudson.plugins.claim.ClaimPublisher/>\n
+        \ </publishers>\n  <buildWrappers>\n    <hudson.plugins.ansicolor.AnsiColorBuildWrapper/>\n
+        \   <ruby-proxy-object>\n      <ruby-object ruby-class=\"Jenkins::Plugin::Proxies::BuildWrapper\"
+        pluginid=\"rvm\">\n        <object ruby-class=\"RvmWrapper\" pluginid=\"rvm\">\n
+        \         <impl pluginid=\"rvm\" ruby-class=\"String\">1.9.2-p290@_PROJECT_NAME_</impl>\n
+        \       </object>\n        <pluginid pluginid=\"rvm\" ruby-class=\"String\">rvm</pluginid>\n
+        \     </ruby-object>\n    </ruby-proxy-object>\n  </buildWrappers>\n</project>"
+    http_version: !!null 
+  recorded_at: Mon, 02 Jul 2012 11:49:49 GMT
+recorded_with: VCR 2.2.1
