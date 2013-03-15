@@ -7,7 +7,7 @@ Great for backup purposes and later restoring to the same or other Jenkins insta
 
 ### Through RVM global gemset (recommended)
 
-    rvm use gemset global
+    rvm gemset use global
     gem install sbci
 
 ### Or per project basis only - Gemfile
